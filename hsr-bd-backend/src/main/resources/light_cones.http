@@ -1,0 +1,65 @@
+###
+POST http://localhost:8080/light_cones
+Content-Type: application/json
+
+{
+  "name": "A Secret Vow",
+  "description": "Increases DMG dealt by the wearer by 20/25/30/35/40%. The wearer also deals an extra 20/25/30/35/40% of DMG to enemies with a higher HP percentage than the wearer.",
+  "minLevelAttack": 21,
+  "maxLevelAttack": 476,
+  "minLevelDefense":  12,
+  "maxLevelDefense":  264,
+  "minLevelHealthPoints": 48,
+  "maxLevelHealthPoints": 1058,
+  "path": {
+    "id": 2
+  },
+  "rarity": {
+    "id": 2
+  }
+}
+
+###
+POST http://localhost:8080/light_cones
+Content-Type: application/json
+
+{
+  "name": "Adversarial",
+  "description": "When the wearer defeats an enemy, increases SPD by 10/12/14/16/18% for 2 turn(s).",
+  "minLevelAttack": 16,
+  "maxLevelAttack": 370,
+  "minLevelDefense":  12,
+  "maxLevelDefense":  264,
+  "minLevelHealthPoints": 33,
+  "maxLevelHealthPoints": 740,
+  "path": {
+    "id": 1
+  },
+  "rarity": {
+    "id": 1
+  }
+}
+
+###
+POST http://localhost:8080/light_cones
+Content-Type: application/json
+
+{
+  "name": "Brighter Than the Sun",
+  "description": "Increases the wearer's CRIT Rate by 18/21/24/27/30%. When the wearer uses their Basic ATK, they will gain 1 stack of Dragon's Call, lasting for 2 turns. Each stack of Dragon's Call increases the wearer's ATK by 18/21/24/27/30% and Energy Regeneration Rate by 6/7/8/9/10%. Dragon's Call can be stacked up to 2 times.",
+  "minLevelHealthPoints": 48,
+  "minLevelAttack": 28,
+  "minLevelDefense":  18,
+  "maxLevelHealthPoints": 1058,
+  "maxLevelAttack": 635,
+  "maxLevelDefense":  396,
+  "path": {
+    "id": 2
+  },
+  "rarity": {
+    "id": 3
+  }
+}
+
+###
+GET localhost:8080/light_cones
