@@ -1,44 +1,38 @@
-import {Card} from "antd";
-import React, {useState} from "react";
-import styled from 'styled-components';
-import lc_image from "../images/Light_Cone_Brighter_Than_the_Sun.webp";
-import three_star_image from "../images/Icon_3_Stars.webp"
-import four_star_image from "../images/Icon_4_Stars.webp"
-import five_star_image from "../images/Icon_5_Stars.webp"
+import { Card, Dropdown, Menu, Modal } from "antd";
+import React, { useState } from "react";
+import HelpFunctions from "./HelpFunctions";
+import { useDispatch } from "react-redux";
+import { EllipsisOutlined } from "@ant-design/icons";
+import lightConeService from "../services/lightConeService";
+import ModalForUpdateLightCone from "./ModalForUpdateLightCone";
 
 const LightConeCard = (lightCone) => {
 
-    const ThreeStarImage = styled.img`
-      width: 45px;
-      height: 20px;
-      margin-bottom: 5px;
-    `;
+    const dispatch = useDispatch();
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const FourStarImage = styled.img`
-      width: 60px;
-      height: 20px;
-      margin-bottom: 5px;
-    `;
+    const handleDelete = () => {
+        lightConeService.deleteLightCone(lightCone.lightCone, dispatch);
+    };
 
-    const FiveStarImage = styled.img`
-      width: 75px;
-      height: 20px;
-      margin-bottom: 5px;
-    `;
+    const handleEdit = () => {
+        setIsModalVisible(true);
+    };
 
-    const checkRarity = (rarity) => {
-        if (rarity === "THREE_STAR") {
-            return (<ThreeStarImage src={three_star_image}></ThreeStarImage>)
-        }
-        if (rarity === "FOUR_STAR") {
-            return (<FourStarImage src={four_star_image}></FourStarImage>)
-        }
-        if (rarity === "FIVE_STAR") {
-            return (<FiveStarImage src={require("../images/Icon_5_Stars.webp")}></FiveStarImage>)
-        }
-    }
+    const handleCancelUpdate = () => {
+        setIsModalVisible(false);
+    };
 
-    const [isCardExpanded, setIsCardExpanded] = useState(false);
+    const menu = (
+        <Menu>
+            <Menu.Item key="delete" onClick={handleDelete}>
+                Delete
+            </Menu.Item>
+            <Menu.Item key="edit" onClick={handleEdit}>
+                Update Info
+            </Menu.Item>
+        </Menu>
+    );
 
     return (
         <Card
@@ -50,20 +44,24 @@ const LightConeCard = (lightCone) => {
                 overflow: 'auto',
             }}
         >
-            <div style={{textAlign: "center"}}><img src={lc_image}
-                 width={180} height={200}></img><br /></div>
+            <div style={{textAlign: "center"}}>
+                <img src={lightCone.lightCone.pathToImg} width={180} height={200} alt="LightCone"></img><br/>
+            </div>
             <div style={{
                 fontSize: 20,
                 fontWeight: "bold",
                 marginBottom: 5,
                 wordWrap: 'break-word',
                 textAlign: 'center'
-            }}>{lightCone.lightCone.name}<br /></div>
-            <div style={{textAlign: "center"}}>{checkRarity(lightCone.lightCone.rarity.rarity)}<br /></div>
-            {lightCone.lightCone.description}<br />
-
+            }}>{lightCone.lightCone.name}<br/></div>
+            <div style={{textAlign: "center"}}>{HelpFunctions.checkRarity(lightCone.lightCone.rarity.rarity)}<br/></div>
+            {lightCone.lightCone.description}<br/>
+            <Dropdown overlay={menu} placement="bottomCenter">
+                <EllipsisOutlined style={{ position: 'absolute', top: 10, right: 20, fontSize: 20 }} />
+            </Dropdown>
+            <ModalForUpdateLightCone selectedLightCone={lightCone.lightCone} visible={isModalVisible} onCancel={handleCancelUpdate} />
         </Card>
     )
-}
+};
 
 export default LightConeCard;

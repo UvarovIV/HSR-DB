@@ -66,6 +66,35 @@ const createLightCone = (lightCone, dispatch) => {
         });
 };
 
+const updateLightCone = (lightCone, dispatch) => {
+
+    return axios.put(API_URL, lightCone).then(
+        () => {
+            getAllLightCones(dispatch)
+        },
+        (error) => {
+            const _content = (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+
+            console.error(_content)
+        });
+};
+
+const deleteLightCone = (lightCone, dispatch) => {
+
+    return axios.delete(API_URL+`/${lightCone.id}`).then(
+        () => {
+            getAllLightCones(dispatch)
+        },
+        (error) => {
+            const _content = (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+            console.error(_content)
+        });
+};
+
 const selectLightCone = (lightCone, dispatch) => {
     dispatch(setSelectedLightCone(lightCone))
 }
@@ -75,6 +104,8 @@ const LightConeService = {
     getRarities,
     getPaths,
     createLightCone,
+    updateLightCone,
+    deleteLightCone,
     selectLightCone,
 };
 

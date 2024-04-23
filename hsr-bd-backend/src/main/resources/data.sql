@@ -33,4 +33,4 @@ values ('Wind', '../images/combat_types/Type_Wind.webp');
 insert into uvaroviv_hsr_db.combat_types (name, path_to_image)
 values ('Quantum', '../images/combat_types/Type_Quantum.webp');
 insert into uvaroviv_hsr_db.combat_types (name, path_to_image)
-values ('Imaginary', '../images/combat_types/Type_Imaginary.webp');
+values ('Imaginary', 'https://honkai-star-rail.fandom.com/wiki/Imaginary?file=Type_Imaginary.png');

@@ -1,7 +1,8 @@
-package com.uvaroviv.hsrbdbackend.services;
+package com.uvaroviv.hsrbdbackend.Impl;
 
 import com.uvaroviv.hsrbdbackend.entities.Path;
 import com.uvaroviv.hsrbdbackend.repositories.PathRepository;
+import com.uvaroviv.hsrbdbackend.services.PathService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

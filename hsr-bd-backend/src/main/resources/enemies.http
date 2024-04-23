@@ -1,0 +1,15 @@
+###
+GET localhost:8080/enemies
+
+###
+POST localhost:8080/enemies
+Content-Type: application/json
+
+{
+  "name": "Baryon",
+  "pathToImg": "https://static.wikia.nocookie.net/houkai-star-rail/images/a/ab/Enemy_Baryon.png",
+  "combatTypes": ["Ice", "Imaginary"]
+}
+
+###
+DELETE localhost:8080/enemies/3

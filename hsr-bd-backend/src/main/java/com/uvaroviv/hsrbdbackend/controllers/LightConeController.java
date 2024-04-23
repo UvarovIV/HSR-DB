@@ -40,6 +40,32 @@ public class LightConeController {
         return ResponseEntity.created(URI.create("/light_cones/" + lightConeId)).build();
     }
 
+    @DeleteMapping("/{lightConeId}")
+    public ResponseEntity<?> deleteLightCone(@PathVariable long lightConeId) {
+        boolean isDeleted = lightConeService.deleteLightCone(lightConeId);
+
+        if (isDeleted) {
+            log.info("Удаление светового конуса по id");
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateLightCone(@Valid @RequestBody LightCone lightCone) {
+
+        boolean isUpdated = lightConeService.updateLightCone(lightCone);
+
+        if (isUpdated) {
+            log.info("Обновление информации о световом конусе");
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
     @GetMapping
     public List<LightCone> getLightCones() {
         log.info("Вывод всех световых конусов");

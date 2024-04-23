@@ -26,7 +26,8 @@ public class LightCone {
     @JoinColumn(name = "path_id", nullable = false)
     private Path path;
 
-    //Добавить картинку
+    @Column
+    private String pathToImg;
 
     @Column(length = 1000)
     private String description;

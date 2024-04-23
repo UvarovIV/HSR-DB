@@ -1,0 +1,23 @@
+###
+GET localhost:8080/characters
+
+###
+POST http://localhost:8080/characters
+Content-Type: application/json
+
+{
+  "name": "Dan Heng Imbibitor Lunae",
+  "pathToImg": "https://honkai-star-rail.gamemeta.ru/upload/iblock/356/q4bxso9hsr155s9cps8tssuw6kdlzztf/dan_khen_pozhiratel_luny_detail.webp",
+  "rarity": {
+    "id": 3
+  },
+  "combatType": {
+    "id": 7
+  },
+  "path": {
+    "id": 1
+  }
+}
+
+###
+DELETE localhost:8080/characters/1

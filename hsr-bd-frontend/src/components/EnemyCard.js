@@ -1,26 +1,20 @@
 import {Card, Dropdown, Menu} from "antd";
 import React, {useState} from "react";
-import HelpFunctions from "./HelpFunctions";
-import {EllipsisOutlined} from "@ant-design/icons";
-import characterService from "../services/characterService";
 import {useDispatch} from "react-redux";
-import ModalForUpdateCharacter from "./ModalForUpdateCharacter";
+import lightConeService from "../services/lightConeService";
+import enemyService from "../services/enemyService";
+import {EllipsisOutlined} from "@ant-design/icons";
 
-const CharacterCard = (character) => {
+const EnemyCard = (enemy) => {
 
     const dispatch = useDispatch();
-    const [isModalVisible, setIsModalVisible] = useState(false);
 
     const handleDelete = () => {
-        characterService.deleteCharacter(character.character, dispatch);
+        enemyService.deleteEnemy(enemy.enemy, dispatch);
     };
 
     const handleEdit = () => {
-        setIsModalVisible(true);
-    };
 
-    const handleCancelUpdate = () => {
-        setIsModalVisible(false);
     };
 
     const menu = (
@@ -45,24 +39,19 @@ const CharacterCard = (character) => {
             }}
         >
             <div style={{textAlign: "center"}}>
-                {<img src={character.character.pathToImg} width={300} height={300}></img>}
+                {<img src={enemy.enemy.pathToImg} width={300} height={300}></img>}
                 <div style={{
                     fontSize: 20,
                     fontWeight: "bold",
                     marginBottom: 5,
                     wordWrap: 'break-word',
-                }}>{character.character.name}<br/></div>
-                {HelpFunctions.checkRarity(character.character.rarity.rarity)}<br/>
-                {HelpFunctions.checkCombatType(character.character.combatType)}
-                {character.character.combatType.name}<br/>
-                {character.character.path.name}
+                }}>{enemy.enemy.name}<br/></div>
                 <Dropdown overlay={menu} placement="bottomRight">
                     <EllipsisOutlined style={{ position: 'absolute', top: 10, right: 20, fontSize: 20 }} />
                 </Dropdown>
-                <ModalForUpdateCharacter selectedCharacter={character.character} visible={isModalVisible} onCancel={handleCancelUpdate} />
             </div>
         </Card>
     )
 }
 
-export default CharacterCard;
+export default EnemyCard;

@@ -3,10 +3,12 @@ import {
     InboxOutlined,
 } from '@ant-design/icons';
 import {Layout, Menu, Button, theme} from 'antd';
-import LightConesPage from "./pages/LightConesPage";
+import {LightConesPage} from "./pages/LightConesPage";
 import logo_image from "./images/logo_DB.png"
 import {Link, Route, Routes} from "react-router-dom";
 import {NotFoundPage} from "./pages/NotFoundPage";
+import {CharactersPage} from "./pages/CharactersPage";
+import {EnemiesPage} from "./pages/EnemiesPage";
 
 
 const {Header, Sider, Content} = Layout;
@@ -25,9 +27,15 @@ const App = () => {
                 <Menu
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={['1']}>
+                    defaultSelectedKeys={['light_cones']}>
                     <Menu.Item key="light_cones" icon={<InboxOutlined/>}>
-                        <Link to="/light_cones">Световые конусы</Link>
+                        <Link to="/light_cones">Lights Cones</Link>
+                    </Menu.Item>
+                    <Menu.Item key="characters" icon={<InboxOutlined/>}>
+                        <Link to="/characters">Characters</Link>
+                    </Menu.Item>
+                    <Menu.Item key="enemies" icon={<InboxOutlined/>}>
+                        <Link to="/enemies">Enemies</Link>
                     </Menu.Item>
                 </Menu>
             </Sider>
@@ -36,6 +44,8 @@ const App = () => {
                 <Content>
                     <Routes>
                         <Route path="/light_cones" element={<LightConesPage/>}/>
+                        <Route path="/characters" element={<CharactersPage/>}/>
+                        <Route path="/enemies" element={<EnemiesPage/>}/>
                         <Route path="*" element={<NotFoundPage/>}/>
                     </Routes>
                 </Content>

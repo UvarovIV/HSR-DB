@@ -3,8 +3,9 @@ import './LightConesPage.css';
 import LightConeCard from "../components/LightConeCard";
 import {useDispatch, useSelector} from "react-redux";
 import lightConeService from "../services/lightConeService";
+import ModalForAddLightCone from "../components/ModalForAddLightCone";
 
-const LightConesPage = () => {
+export const LightConesPage = () => {
 
     const lightCones = useSelector((state) => state.lightCones.lightCones);
     const selectedLightCone = useSelector((state) => state.lightCones.selectedLightCone);
@@ -16,13 +17,11 @@ const LightConesPage = () => {
     }, [selectedLightCone]);
 
     return (
-        <div className="MainPage">
-
+        <div className="LightConesPage">
+            <div style={{position: "absolute", top: 20, right: 20}}><ModalForAddLightCone /></div>
             {lightCones.map((lightCone) => (
                 <LightConeCard lightCone={lightCone}/>
             ))}
         </div>
     );
 }
-
-export default LightConesPage;

@@ -63,3 +63,6 @@ Content-Type: application/json
 
 ###
 GET localhost:8080/light_cones
+
+###
+DELETE localhost:8080/light_cones/1

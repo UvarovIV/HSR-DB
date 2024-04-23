@@ -1,7 +1,8 @@
-package com.uvaroviv.hsrbdbackend.services;
+package com.uvaroviv.hsrbdbackend.Impl;
 
 import com.uvaroviv.hsrbdbackend.entities.LightCone;
 import com.uvaroviv.hsrbdbackend.repositories.LightConeRepository;
+import com.uvaroviv.hsrbdbackend.services.LightConeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
